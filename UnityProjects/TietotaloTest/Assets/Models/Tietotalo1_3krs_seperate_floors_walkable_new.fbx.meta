@@ -1,46 +1,53 @@
 fileFormatVersion: 2
-guid: aea6c94ae659fe04eb2b702c2e048d21
-timeCreated: 1511213859
+guid: 50dc92be147f04c6db89892e4fe462bc
+timeCreated: 1511357578
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Camera
-    100002: Floor
+    100000: Floor
+    100002: FloorsWalkable
     100004: //RootNode
-    100006: Walls_inner
+    100006: Walls_inner1
     100008: Walls_inner2
     100010: Walls_inner3
     100012: Walls_outer
-    400000: Camera
-    400002: Floor
+    400000: Floor
+    400002: FloorsWalkable
     400004: //RootNode
-    400006: Walls_inner
+    400006: Walls_inner1
     400008: Walls_inner2
     400010: Walls_inner3
     400012: Walls_outer
-    2000000: Camera
     2300000: Floor
-    2300002: Walls_inner
-    2300004: Walls_inner2
-    2300006: Walls_inner3
-    2300008: Walls_outer
+    2300002: FloorsWalkable
+    2300004: Walls_inner1
+    2300006: Walls_inner2
+    2300008: Walls_inner3
+    2300010: Walls_outer
     3300000: Floor
-    3300002: Walls_inner
-    3300004: Walls_inner2
-    3300006: Walls_inner3
-    3300008: Walls_outer
-    4300000: Walls_inner
-    4300002: Walls_inner3
-    4300004: Walls_inner2
-    4300006: Walls_outer
-    4300008: Floor
+    3300002: FloorsWalkable
+    3300004: Walls_inner1
+    3300006: Walls_inner2
+    3300008: Walls_inner3
+    3300010: Walls_outer
+    4300000: Walls_inner2
+    4300002: FloorsWalkable
+    4300004: Walls_inner3
+    4300006: Walls_inner1
+    4300008: Walls_outer
+    4300010: Floor
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.001
     second: {fileID: 2100000, guid: e11810080e9ae024b84bf29929ea84fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WalkableFloorMaterial
+    second: {fileID: 2100000, guid: 70e48a2bd1fcf4207ac3954f4f4f0288, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
