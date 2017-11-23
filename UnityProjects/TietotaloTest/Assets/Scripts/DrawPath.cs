@@ -12,12 +12,14 @@ public class DrawPath : MonoBehaviour {
 	private NavMeshAgent agent;
 	private bool linesDrawn;
 	private LinkedList<GameObject> lines;
+    private float pathLength;
     
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
 		agent.SetDestination (goal.transform.position);
 		linesDrawn = false;
 		lines = new LinkedList<GameObject> ();
+        pathLength = 0;
 	}	
 
 	void Update(){
@@ -34,9 +36,12 @@ public class DrawPath : MonoBehaviour {
 			}
 			lines.Clear ();
 			linesDrawn = false;
+            pathLength = 0;
+            
 		}
 		Vector3 previous = transform.position;
 		foreach (var corner in agent.path.corners) {
+            pathLength += Vector3.Distance(previous, corner);
             Vector3 navLineOffset = new Vector3(0, navLineOffsetY, 0);
 			GameObject navLine = new GameObject ();
 			lines.AddLast (navLine);
@@ -49,6 +54,7 @@ public class DrawPath : MonoBehaviour {
 			lr.SetPositions (new Vector3[]{ previous + navLineOffset, corner + navLineOffset });
 			previous = corner;	
 			linesDrawn = true;
+            Debug.Log(pathLength);
 		}
 
 	}
