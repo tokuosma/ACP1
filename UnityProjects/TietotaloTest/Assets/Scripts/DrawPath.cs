@@ -1,4 +1,5 @@
 ﻿// MoveTo.cs
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
@@ -8,13 +9,16 @@ public class DrawPath : MonoBehaviour {
 	public Transform goal;
     public Material lineMaterial;
     public float navLineOffsetY;
+    public Text distance;
 
-	private NavMeshAgent agent;
+    private NavMeshAgent agent;
 	private bool linesDrawn;
 	private LinkedList<GameObject> lines;
     private float pathLength;
+
     
-	void Start () {
+
+    void Start () {
 		agent = GetComponent<NavMeshAgent> ();
 		agent.SetDestination (goal.transform.position);
 		linesDrawn = false;
@@ -24,10 +28,9 @@ public class DrawPath : MonoBehaviour {
 
 	void Update(){
 
-		if (Input.GetKeyDown (KeyCode.Q)) {
 			UpdateDrawnPath ();
-		}
-	}
+        
+    }
 
 	private void UpdateDrawnPath(){
 		if (linesDrawn) {
@@ -38,7 +41,8 @@ public class DrawPath : MonoBehaviour {
 			linesDrawn = false;
             pathLength = 0;
             
-		}
+
+        }
 		Vector3 previous = transform.position;
 		foreach (var corner in agent.path.corners) {
             pathLength += Vector3.Distance(previous, corner);
@@ -54,10 +58,12 @@ public class DrawPath : MonoBehaviour {
 			lr.SetPositions (new Vector3[]{ previous + navLineOffset, corner + navLineOffset });
 			previous = corner;	
 			linesDrawn = true;
-            Debug.Log(pathLength);
-		}
+            //Debug.Log(pathLength);
+            distance.text = pathLength.ToString();
+        }
 
 	}
+
 
 
 }
