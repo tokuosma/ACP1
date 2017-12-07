@@ -2,23 +2,30 @@
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class valikko : MonoBehaviour
 {
 
-    List<string> kohteet = new List<string> { "yksi", "kaksi", "kolme" };
+	List<Destination> kohteet;
 
+	public GameObject playerNavAgent;
     public Dropdown dropdown;
     public Text selectedName;
 
-
-    public void Dropdown_IndexChanged(int valinta)
+	public void Dropdown_IndexChanged(int valinta)
     {
-        selectedName.text = kohteet[valinta];
+		
+        selectedName.text = kohteet[valinta].Name;
+		playerNavAgent.GetComponent<NavMeshAgent> ().SetDestination (kohteet [valinta].transform.position);
     }
 
     private void Start()
     {
+		kohteet = new List<Destination> ();
+		foreach (Destination destination in GameObject.FindObjectsOfType<Destination>()) {
+			kohteet.Add (destination);
+		}
         PopulateList();
     }
 
@@ -38,12 +45,15 @@ public class valikko : MonoBehaviour
 				dropdown.value += 1;
 			}
 		}
-		Debug.Log(dropdown.value);
 	}
 
     void PopulateList()
     {  
-        dropdown.AddOptions(kohteet);
+		List<string> names = new List<string> ();
+		foreach (Destination destination in kohteet) {
+			names.Add (destination.Name);
+		}
+		dropdown.AddOptions (names);
     }
 
 }
