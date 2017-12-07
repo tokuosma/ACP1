@@ -9,7 +9,8 @@ public class DrawPath : MonoBehaviour {
 	public Transform goal;
     public Material lineMaterial;
     public float navLineOffsetY;
-    public Text distance;
+	public bool AutoRedrawPath;
+	public Text distance;
 
     private NavMeshAgent agent;
 	private bool linesDrawn;
@@ -28,8 +29,9 @@ public class DrawPath : MonoBehaviour {
 
 	void Update(){
 
+		if (Input.GetButtonDown("DrawPath") || AutoRedrawPath) {
 			UpdateDrawnPath ();
-        
+		}
     }
 
 	private void UpdateDrawnPath(){
@@ -40,8 +42,6 @@ public class DrawPath : MonoBehaviour {
 			lines.Clear ();
 			linesDrawn = false;
             pathLength = 0;
-            
-
         }
 		Vector3 previous = transform.position;
 		foreach (var corner in agent.path.corners) {
