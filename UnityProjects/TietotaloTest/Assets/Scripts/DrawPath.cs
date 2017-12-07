@@ -45,6 +45,8 @@ public class DrawPath : MonoBehaviour {
 			lr.useWorldSpace = true;
 			lr.startWidth = 1f;
 			lr.endWidth = 1f;
+			lr.startColor = Color.cyan;
+			lr.endColor = Color.red;
 			lr.positionCount = agent.path.corners.Length;
 			lr.SetPositions (agent.path.corners);
 		} else {
