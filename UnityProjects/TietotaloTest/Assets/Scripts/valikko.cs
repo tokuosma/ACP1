@@ -31,6 +31,7 @@ public class valikko : MonoBehaviour
 
 	private void Update(){
 		if (Input.GetButtonDown("PreviousDestination")) {
+			dropdown.Hide ();
 			if(dropdown.value -1 < 0){
 				// Cycle back to last option
 				dropdown.value = dropdown.options.Count - 1;
@@ -38,6 +39,7 @@ public class valikko : MonoBehaviour
 			else{dropdown.value -= 1;}
 		}
 		if(Input.GetButtonDown("NextDestination")){
+			dropdown.Hide ();
 			if(dropdown.value + 1 >= dropdown.options.Count){
 				dropdown.value = 0;
 			}

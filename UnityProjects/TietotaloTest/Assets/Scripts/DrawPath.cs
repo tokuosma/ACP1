@@ -13,17 +13,15 @@ public class DrawPath : MonoBehaviour {
 	public Text distance;
 
     private NavMeshAgent agent;
-	private bool linesDrawn;
-	private LinkedList<GameObject> lines;
+	/// <summary>
+	/// The nav line drawn.
+	/// </summary>
+	private GameObject navLine;
     private float pathLength;
-
-    
 
     void Start () {
 		agent = GetComponent<NavMeshAgent> ();
 		agent.SetDestination (goal.transform.position);
-		linesDrawn = false;
-		lines = new LinkedList<GameObject> ();
         pathLength = 0;
 	}	
 
@@ -34,36 +32,44 @@ public class DrawPath : MonoBehaviour {
 		}
     }
 
-	private void UpdateDrawnPath(){
-		if (linesDrawn) {
-			foreach (var line in lines) {
-				GameObject.Destroy (line);
-			}
-			lines.Clear ();
-			linesDrawn = false;
-            pathLength = 0;
-        }
-		Vector3 previous = transform.position;
-		foreach (var corner in agent.path.corners) {
-            pathLength += Vector3.Distance(previous, corner);
-            Vector3 navLineOffset = new Vector3(0, navLineOffsetY, 0);
-			GameObject navLine = new GameObject ();
-			lines.AddLast (navLine);
-			navLine.transform.position = previous  + navLineOffset;
-            LineRenderer lr = navLine.AddComponent<LineRenderer> ();
-            lr.material = lineMaterial;
-            lr.textureMode = LineTextureMode.Tile;
-            lr.startWidth = 1f;
-            lr.endWidth = 1f;
-			lr.SetPositions (new Vector3[]{ previous + navLineOffset, corner + navLineOffset });
-			previous = corner;	
-			linesDrawn = true;
-            //Debug.Log(pathLength);
-            distance.text = pathLength.ToString();
-        }
-
+	public void UpdateDrawnPath(){
+		if (navLine == null) {
+			// Insantiate a new nav line game object and draw initial path
+			navLine = new GameObject ("NavLine");
+			navLine.transform.position = transform.position;
+			navLine.transform.rotation = Quaternion.Euler(90,0,0);
+			LineRenderer lr = navLine.AddComponent<LineRenderer> ();
+			lr.material = lineMaterial;
+			lr.textureMode = LineTextureMode.Tile;
+			lr.alignment = LineAlignment.Local;
+			lr.useWorldSpace = true;
+			lr.startWidth = 1f;
+			lr.endWidth = 1f;
+			lr.positionCount = agent.path.corners.Length;
+			lr.SetPositions (agent.path.corners);
+		} else {
+			// Update existingin nav line
+			LineRenderer lr = navLine.GetComponent<LineRenderer> ();
+			lr.positionCount = agent.path.corners.Length;
+			lr.SetPositions (agent.path.corners);
+		}
+		// Update path length to UI
+		distance.text = GetPathLength ().ToString ();
 	}
 
-
+	public float GetPathLength(){
+		if (agent != null && agent.hasPath) {
+			float pathLength = 0.0f;
+			Vector3 previous = transform.position;
+			foreach (Vector3 corner in agent.path.corners) {
+				pathLength += Vector3.Distance (previous, corner);
+				previous = corner;
+			}
+			return pathLength;
+		} else {
+			return 0;
+		}
+	}
+	
 
 }
