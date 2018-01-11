@@ -4,8 +4,24 @@ using UnityEngine;
 
 public class IaListener : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public static IaListener instance;
+
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(this);
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
