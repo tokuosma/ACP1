@@ -6,6 +6,7 @@ public class IaListener : MonoBehaviour {
 
     public static IaListener instance;
 
+    public IndoorAtlas.Status status;
 
     private void Awake()
     {
@@ -46,9 +47,10 @@ public class IaListener : MonoBehaviour {
 
     void onStatusChanged(string data)
     {
-        IndoorAtlas.Status serviceStatus = JsonUtility.FromJson<IndoorAtlas.Status>(data);
+        status = JsonUtility.FromJson<IndoorAtlas.Status>(data);
+
         //statusText.text = Enum.GetName(typeof(IndoorAtlas.Status.ServiceStatus), serviceStatus.status);
-        Debug.Log("onStatusChanged " + serviceStatus.status);
+        Debug.Log("onStatusChanged " + status);
     }
 
     void onHeadingChanged(string data)
@@ -69,13 +71,22 @@ public class IaListener : MonoBehaviour {
         IndoorAtlas.Region region = JsonUtility.FromJson<IndoorAtlas.Region>(data);
         string text = "onEnterRegion " + region.name + ", " + region.type + ", " + region.id + " at " + region.timestamp;
         //regionText.text = region.name;
-
         Debug.Log(text);
+
+        if (RegionManager.instance != null)
+        {
+            RegionManager.instance.LoadRegion(region.id);
+        }
+
     }
 
     void onExitRegion(string data)
     {
         IndoorAtlas.Region region = JsonUtility.FromJson<IndoorAtlas.Region>(data);
         Debug.Log("onExitRegion " + region.name + ", " + region.type + ", " + region.id + " at " + region.timestamp);
+        if(RegionManager.instance != null)
+        {
+            RegionManager.instance.LoadWaitScreen();
+        }
     }
 }
