@@ -1,12 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
+/// <summary>
+/// Stores and updates ApiValues
+/// </summary>
 public class IaListener : MonoBehaviour {
 
     public static IaListener instance;
-
     public IndoorAtlas.Status status;
+    public IndoorAtlas.Location location;
+    public IndoorAtlas.Heading heading;
+    public IndoorAtlas.Region region;
+    public IndoorAtlas.Orientation orientation;
+
+    private GameObject player;
 
     private void Awake()
     {
@@ -21,69 +32,52 @@ public class IaListener : MonoBehaviour {
         DontDestroyOnLoad(this);
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnLevelWasLoaded(int level)
+    {
+        player = FindObjectOfType<FirstPersonController>().gameObject;
 
+#if (UNITY_ANDROID && !UNITY_EDITOR)
+        // Disable player controller for actual builds
+        player.GetComponent<FirstPersonController>().enabled = false;
+#endif
+        
+    }
     void onLocationChanged(string data)
     {
         IndoorAtlas.Location location = JsonUtility.FromJson<IndoorAtlas.Location>(data);
-        Debug.Log("onLocationChanged " + location.latitude + ", " + location.longitude);
-
-        //double posX = ((location.longitude - longitudeSW) / xMax);
-        //double posY = ((location.latitude - latitudeSW) / yMax);
-
-        //xmark.UpdatePosition(posX, posY);
-
-        //locationText.text = string.Format("Long: {0}, Lat: {1}", location.longitude, location.latitude);
-        //accuracyText.text = string.Format("Accuracy: {0} m", location.accuracy);
+        this.location = location;
     }
 
     void onStatusChanged(string data)
     {
         status = JsonUtility.FromJson<IndoorAtlas.Status>(data);
-
-        //statusText.text = Enum.GetName(typeof(IndoorAtlas.Status.ServiceStatus), serviceStatus.status);
-        Debug.Log("onStatusChanged " + status);
     }
 
     void onHeadingChanged(string data)
     {
-        IndoorAtlas.Heading heading = JsonUtility.FromJson<IndoorAtlas.Heading>(data);
-        Debug.Log("onHeadingChanged " + heading.heading);
+        heading = JsonUtility.FromJson<IndoorAtlas.Heading>(data);
     }
 
     void onOrientationChange(string data)
     {
-        Quaternion orientation = JsonUtility.FromJson<IndoorAtlas.Orientation>(data).getQuaternion();
-        Quaternion rot = Quaternion.Inverse(new Quaternion(orientation.x, orientation.y, -orientation.z, orientation.w));
+        orientation = JsonUtility.FromJson<IndoorAtlas.Orientation>(data);
+        Quaternion quaternion = orientation.getQuaternion();
+        Quaternion rot = Quaternion.Inverse(new Quaternion(quaternion.x, quaternion.y, -quaternion.z, quaternion.w));
         Camera.main.transform.rotation = Quaternion.Euler(new Vector3(90.0f, 0.0f, 0.0f)) * rot;
     }
 
     void onEnterRegion(string data)
     {
-        IndoorAtlas.Region region = JsonUtility.FromJson<IndoorAtlas.Region>(data);
-        string text = "onEnterRegion " + region.name + ", " + region.type + ", " + region.id + " at " + region.timestamp;
-        //regionText.text = region.name;
-        Debug.Log(text);
-
+        region = JsonUtility.FromJson<IndoorAtlas.Region>(data);
         if (RegionManager.instance != null)
         {
             RegionManager.instance.LoadRegion(region.id);
         }
-
     }
 
     void onExitRegion(string data)
     {
-        IndoorAtlas.Region region = JsonUtility.FromJson<IndoorAtlas.Region>(data);
-        Debug.Log("onExitRegion " + region.name + ", " + region.type + ", " + region.id + " at " + region.timestamp);
+        region = JsonUtility.FromJson<IndoorAtlas.Region>(data);
         if(RegionManager.instance != null)
         {
             RegionManager.instance.LoadWaitScreen();

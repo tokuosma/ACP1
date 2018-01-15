@@ -40,12 +40,13 @@ public class RegionManager : MonoBehaviour {
     /// </summary>
     private void initDictionary()
     {
-        regionDictionary = new Dictionary<string, string>();
+        regionDictionary = new Dictionary<string, string>
+        {
+            { "3da8af39-9a0b-4d00-9b47-b9149671aa87", "kalervontie_3hk" },
+            { "ed5143fc-b9e4-41cf-804c-22c86ca9afe1", "" },
+            { "5f0aac9d-c2bb-4dfc-9418-daeadfc8ad44", "tietotalo_3krs" }
+        };
 
-        regionDictionary.Add("3da8af39-9a0b-4d00-9b47-b9149671aa87", "kalervontie_3hk");
-        regionDictionary.Add("ed5143fc-b9e4-41cf-804c-22c86ca9afe1", "");
-        regionDictionary.Add("5f0aac9d-c2bb-4dfc-9418-daeadfc8ad44", "tietotalo_3krs");
-        
     }
 
     /// <summary>
@@ -57,7 +58,7 @@ public class RegionManager : MonoBehaviour {
         string sceneName = regionDictionary[regionId];
         if (string.IsNullOrEmpty(sceneName))
         {
-            Debug.Log(string.Format("No scene with id '{}' found in the region dictionary! ", regionId));
+            Debug.Log(string.Format("No scene with id '{0}' found in the region dictionary! ", regionId));
         }
         SceneManager.LoadScene(sceneName);
     }
