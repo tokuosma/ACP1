@@ -24,7 +24,7 @@ public class RegionManager : MonoBehaviour {
         }
 
         DontDestroyOnLoad(this);
-        initDictionary();
+        InitDictionary();
     }
     // Use this for initialization
     void Start () {
@@ -36,14 +36,14 @@ public class RegionManager : MonoBehaviour {
 	}
 
     /// <summary>
-    /// Initialize dictionary and add all 
+    /// Initialize dictionary
     /// </summary>
-    private void initDictionary()
+    private void InitDictionary()
     {
         regionDictionary = new Dictionary<string, string>
         {
             { "3da8af39-9a0b-4d00-9b47-b9149671aa87", "kalervontie_3hk" },
-            { "ed5143fc-b9e4-41cf-804c-22c86ca9afe1", "" },
+            { "ed5143fc-b9e4-41cf-804c-22c86ca9afe1", "" }, // Tellus, scene puuttuu
             { "5f0aac9d-c2bb-4dfc-9418-daeadfc8ad44", "tietotalo_3krs" }
         };
 

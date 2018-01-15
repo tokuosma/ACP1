@@ -14,13 +14,14 @@ public class IaBehavior : MonoBehaviour {
 	[Header("Orientation request configuration")]
 	public double headingSensitivity = 0.01f;
 	public double orientationSensitivity = 0.0001f;
-	#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
 	private AndroidJavaObject iaJavaObject;
-	#elif UNITY_IOS
-	#endif
+#elif UNITY_IOS && !UNITY_EDITOR
+#endif
 
-	// Initialization
-	void Start () {
+    // Initialization
+    void Start () {
+
 	#if (UNITY_ANDROID && !UNITY_EDITOR)
 		AndroidJavaClass jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
 		AndroidJavaObject jo = jc.GetStatic<AndroidJavaObject>("currentActivity");

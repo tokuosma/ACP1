@@ -150,10 +150,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
    
         }
 
-
-
-
-
         private void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
