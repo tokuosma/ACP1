@@ -719,12 +719,12 @@ Prefab:
     - target: {fileID: 114645087276205932, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
         type: 2}
       propertyPath: latitude
-      value: 65.05819956
+      value: 65.05758276
       objectReference: {fileID: 0}
     - target: {fileID: 114645087276205932, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
         type: 2}
       propertyPath: longitude
-      value: 25.4700796
+      value: 25.46806294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf18b80e5fb545d4cbe323e728c8f4c0, type: 2}
@@ -780,12 +780,12 @@ Prefab:
     - target: {fileID: 114645087276205932, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
         type: 2}
       propertyPath: latitude
-      value: 65.05758276
+      value: 65.05819956
       objectReference: {fileID: 0}
     - target: {fileID: 114645087276205932, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
         type: 2}
       propertyPath: longitude
-      value: 25.46806294
+      value: 25.4700796
       objectReference: {fileID: 0}
     - target: {fileID: 114645087276205932, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
         type: 2}
@@ -890,12 +890,12 @@ Prefab:
     - target: {fileID: 114645087276205932, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
         type: 2}
       propertyPath: latitude
-      value: 65.05819956
+      value: 65.05758276
       objectReference: {fileID: 0}
     - target: {fileID: 114645087276205932, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
         type: 2}
       propertyPath: longitude
-      value: 25.46806294
+      value: 25.4700796
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf18b80e5fb545d4cbe323e728c8f4c0, type: 2}
@@ -1053,12 +1053,12 @@ Prefab:
     - target: {fileID: 114645087276205932, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
         type: 2}
       propertyPath: latitude
-      value: 65.05758276
+      value: 65.05819956
       objectReference: {fileID: 0}
     - target: {fileID: 114645087276205932, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
         type: 2}
       propertyPath: longitude
-      value: 25.4700796
+      value: 25.46806294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bf18b80e5fb545d4cbe323e728c8f4c0, type: 2}

@@ -28,14 +28,14 @@ public class Level : MonoBehaviour
     private double levelHeightDegree;
 
     /// <summary>
-    /// Maximum latitude value
+    /// Minumum latitude value
     /// </summary>
-    private double maxLatitude;
+    private double minLatitude;
 
     /// <summary>
-    /// Maximum longitude value
+    /// Minimum longitude value
     /// </summary>
-    private double maxLongitude;
+    private double minLongitude;
 
     /// <summary>
     /// Width of the level in game units
@@ -102,16 +102,23 @@ public class Level : MonoBehaviour
         // Calculate level dimensions and scale
         levelHeightDegree = corners[Corner.CornerType.NorthEast].latitude - corners[Corner.CornerType.SouthEast].latitude;
         levelWidthDegree = corners[Corner.CornerType.NorthEast].longitude- corners[Corner.CornerType.NorthWest].longitude;
-        maxLatitude = corners[Corner.CornerType.NorthWest].latitude;
-        maxLongitude = corners[Corner.CornerType.NorthEast].longitude;
+        minLatitude = corners[Corner.CornerType.SouthWest].latitude;
+        minLongitude = corners[Corner.CornerType.NorthWest].longitude;
         minX = corners[Corner.CornerType.SouthWest].transform.position.x;
         maxX = corners[Corner.CornerType.SouthEast].transform.position.x;
-        levelHeight = maxX - minX;
         minZ = corners[Corner.CornerType.SouthWest].transform.position.z;
         maxZ = corners[Corner.CornerType.NorthWest].transform.position.z;
-        levelWidth = maxZ - minZ;
+        levelHeight = maxZ - minZ;
+        levelWidth = maxX - minX;
         yLevel = corners[Corner.CornerType.NorthEast].transform.position.y;
         ScalingFactor = levelWidthMeter / levelWidth;
+
+#if UNITY_EDITOR
+        Debug.Log("Position NE: " + GetLevelPosition(corners[Corner.CornerType.NorthEast].latitude, corners[Corner.CornerType.NorthEast].longitude));
+        Debug.Log("Position NW: " + GetLevelPosition(corners[Corner.CornerType.NorthWest].latitude, corners[Corner.CornerType.NorthWest].longitude));
+        Debug.Log("Position SE: " + GetLevelPosition(corners[Corner.CornerType.SouthEast].latitude, corners[Corner.CornerType.SouthEast].longitude));
+        Debug.Log("Position SW: " + GetLevelPosition(corners[Corner.CornerType.SouthWest].latitude, corners[Corner.CornerType.SouthWest].longitude));
+#endif
     }
 
     /// <summary>
@@ -123,14 +130,14 @@ public class Level : MonoBehaviour
     public Vector3 GetLevelPosition(double latitude, double longitude)
     {
 
-        var xNorm = (maxLatitude - latitude) / levelHeightDegree;
-        var zNorm = (maxLongitude - longitude) / levelWidthDegree;
+        var heightNorm = Mathf.Clamp((float)((latitude -minLatitude ) / levelHeightDegree), 0f, 1f);
+        var widthNorm = Mathf.Clamp((float)((longitude - minLongitude ) / levelWidthDegree), 0f,1f);
 
         Vector3 position = new Vector3
         {
-            x = (float)(minX + (levelHeight * xNorm)),
+            x = (float)(minX + (levelWidth * widthNorm)),
             y = yLevel,
-            z = (float)(minZ + (levelWidth * zNorm))
+            z = (float)(minZ + (levelHeight * heightNorm))
         };
 
         return position;
