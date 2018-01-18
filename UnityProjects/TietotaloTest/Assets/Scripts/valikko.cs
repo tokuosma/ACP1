@@ -12,12 +12,15 @@ public class valikko : MonoBehaviour
 	public GameObject playerNavAgent;
     public Dropdown dropdown;
     public Text selectedName;
+    private ArrowLookAt arrowLookAt;
 
+    ///<summary>Sets new destination when Dropdown index "valinta" is changed. </summary>
+    ///<param name="valinta">Dropdown index</param>
 	public void Dropdown_IndexChanged(int valinta)
     {
-		
         selectedName.text = kohteet[valinta].Name;
 		playerNavAgent.GetComponent<NavMeshAgent> ().SetDestination (kohteet [valinta].transform.position);
+        arrowLookAt.target = kohteet[valinta].transform;
     }
 
     private void Start()
@@ -27,6 +30,8 @@ public class valikko : MonoBehaviour
 			kohteet.Add (destination);
 		}
         PopulateList();
+
+        arrowLookAt = FindObjectOfType<ArrowLookAt>();
     }
 
 	private void Update(){

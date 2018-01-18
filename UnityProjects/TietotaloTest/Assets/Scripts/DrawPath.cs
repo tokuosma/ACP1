@@ -50,7 +50,7 @@ public class DrawPath : MonoBehaviour {
 			lr.positionCount = agent.path.corners.Length;
 			lr.SetPositions (agent.path.corners);
 		} else {
-			// Update existingin nav line
+			// Update existinging nav line
 			LineRenderer lr = navLine.GetComponent<LineRenderer> ();
 			lr.positionCount = agent.path.corners.Length;
 			lr.SetPositions (agent.path.corners);
