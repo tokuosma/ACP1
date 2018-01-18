@@ -150,10 +150,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
    
         }
 
-
-
-
-
         private void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
@@ -181,8 +177,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void GetInput(out float speed)
         {
             // Read input
+            #if (UNITY_EDITOR)
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            #else
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            #endif
 
             bool waswalking = m_IsWalking;
 

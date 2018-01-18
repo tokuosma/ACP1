@@ -30,8 +30,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera)
         {
+            #if (UNITY_EDITOR) 
+            // Enable mouse look for mobile builds while in editor mode
+            float yRot = Input.GetAxis("Mouse X") * XSensitivity;
+            float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
+            #else
             float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
             float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+            #endif
 
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
