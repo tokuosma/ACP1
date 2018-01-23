@@ -6,13 +6,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DebugHelper : MonoBehaviour {
-    public GameObject player;
-
-    public IaListener iaListener;
-    public Text debugText;
+    private GameObject player;
+    private IaListener iaListener;
+    private Text debugText;
     // Use this for initialization
     void Start () {
-        iaListener = FindObjectOfType<IaListener>();
+        iaListener = IaListener.Instance;
+        player = FindObjectOfType<Player>().gameObject;
+        debugText = GetComponent<Text>();
 	}
 	
 	// Update is called once per frame

@@ -12,6 +12,7 @@ public class DrawPath : MonoBehaviour {
 	public bool AutoRedrawPath;
 	public Text distance;
 
+    private Level level;
     private NavMeshAgent agent;
 	/// <summary>
 	/// The nav line drawn.
@@ -20,6 +21,7 @@ public class DrawPath : MonoBehaviour {
     private float pathLength;
 
     void Start () {
+        level = FindObjectOfType<Level>();
 		agent = GetComponent<NavMeshAgent> ();
 		agent.SetDestination (goal.transform.position);
         pathLength = 0;
@@ -56,7 +58,7 @@ public class DrawPath : MonoBehaviour {
 			lr.SetPositions (agent.path.corners);
 		}
 		// Update path length to UI
-		distance.text = GetPathLength ().ToString ();
+		distance.text = string.Format("{0:F1} m", GetPathLength());
 	}
 
 	public float GetPathLength(){
@@ -67,7 +69,7 @@ public class DrawPath : MonoBehaviour {
 				pathLength += Vector3.Distance (previous, corner);
 				previous = corner;
 			}
-			return pathLength;
+			return pathLength * level.GetScalingFactor();
 		} else {
 			return 0;
 		}

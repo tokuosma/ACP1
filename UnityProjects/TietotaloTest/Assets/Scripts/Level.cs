@@ -71,11 +71,23 @@ public class Level : MonoBehaviour
     /// Maximum z-coordinate in game units
     /// </summary>
     private float maxZ;
+    private float scalingFactor;
 
     /// <summary>
     /// Scaling factor for converting the game units to meters [m/GU]
     /// </summary>
-    public float ScalingFactor { get; private set; }
+    public float GetScalingFactor()
+    {
+        return scalingFactor;
+    }
+
+    /// <summary>
+    /// Scaling factor for converting the game units to meters [m/GU]
+    /// </summary>
+    private void SetScalingFactor(float value)
+    {
+        scalingFactor = value;
+    }
 
     /// <summary>
     /// Dictionary containing all the corners
@@ -111,7 +123,7 @@ public class Level : MonoBehaviour
         levelHeight = maxZ - minZ;
         levelWidth = maxX - minX;
         yLevel = corners[Corner.CornerType.NorthEast].transform.position.y;
-        ScalingFactor = levelWidthMeter / levelWidth;
+        SetScalingFactor(levelWidthMeter / levelWidth);
 
 #if UNITY_EDITOR
         Debug.Log("Position NE: " + GetLevelPosition(corners[Corner.CornerType.NorthEast].latitude, corners[Corner.CornerType.NorthEast].longitude));

@@ -1,17 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour {
 
-    private Level level;
     public float positionUpdateDelay;
     public float orientationUpdateDelay;
+
+    private Level level;
+    private NavMeshAgent navMeshAgent;
+    private DrawPath drawPath;
 
 	// Use this for initialization
 	void Start () {
         level = FindObjectOfType<Level>();
+        navMeshAgent = GetComponentInChildren<NavMeshAgent>();
+        drawPath = GetComponentInChildren<DrawPath>();
 #if ((UNITY_ANDROID || UNITY_IOS)  && !UNITY_EDITOR)
         // Disable player controller for actual builds
         GetComponent<FirstPersonController>().enabled = false;
@@ -33,6 +39,10 @@ public class Player : MonoBehaviour {
                 Vector3 position = FindObjectOfType<Level>().GetLevelPosition(IaListener.Instance.Location.latitude, IaListener.Instance.Location.longitude);
                 transform.position = position;
             }
+            if (navMeshAgent.hasPath) {
+                drawPath.UpdateDrawnPath();
+            }
+
             yield return new WaitForSeconds(positionUpdateDelay); // Set delay in editor
         }
     }
