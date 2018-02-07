@@ -20,12 +20,28 @@ public class Player : MonoBehaviour {
         drawPath = GetComponentInChildren<DrawPath>();
 #if ((UNITY_ANDROID || UNITY_IOS)  && !UNITY_EDITOR)
         // Disable player controller for actual builds
-        GetComponent<FirstPersonController>().enabled = false;
+        //GetComponent<FirstPersonController>().enabled = false;
         StartCoroutine("UpdatePosition");
         StartCoroutine("UpdateCameraOrientation");
 #endif
     }
-   
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+                activity.Call<bool>("moveTaskToBack", true);
+            }
+            else
+            {
+                Application.Quit();
+            }
+        }
+    }
+
     /// <summary>
     /// Coroutine for updating player position
     /// </summary>
