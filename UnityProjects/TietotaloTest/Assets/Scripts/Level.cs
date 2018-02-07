@@ -122,7 +122,7 @@ public class Level : MonoBehaviour
         maxZ = corners[Corner.CornerType.NorthWest].transform.position.z;
         levelHeight = maxZ - minZ;
         levelWidth = maxX - minX;
-        yLevel = corners[Corner.CornerType.NorthEast].transform.position.y;
+        yLevel = corners[Corner.CornerType.NorthEast].transform.position.y + 1.75f;
         SetScalingFactor(levelWidthMeter / levelWidth);
 
 #if UNITY_EDITOR
