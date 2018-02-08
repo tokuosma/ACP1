@@ -187,7 +187,7 @@ Transform:
   m_PrefabParentObject: {fileID: 4462608292810350, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
     type: 2}
   m_PrefabInternal: {fileID: 26285716}
---- !u!1001 &216949042
+--- !u!1001 &68877936
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1254,7 +1254,7 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 1261472165765264, guid: 0dcd5c218d63f440c93b48b2f8b55f01,
     type: 2}
-  m_PrefabInternal: {fileID: 216949042}
+  m_PrefabInternal: {fileID: 68877936}
 --- !u!1001 &2039022428
 Prefab:
   m_ObjectHideFlags: 0
