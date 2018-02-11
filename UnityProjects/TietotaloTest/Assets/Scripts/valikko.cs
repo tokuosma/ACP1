@@ -32,6 +32,8 @@ public class valikko : MonoBehaviour
         PopulateList();
 
         arrowLookAt = FindObjectOfType<ArrowLookAt>();
+
+        Cursor.visible = true;
     }
 
 	private void Update(){
@@ -52,7 +54,30 @@ public class valikko : MonoBehaviour
 				dropdown.value += 1;
 			}
 		}
-	}
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            dropdown.Hide();
+            if (dropdown.value + 1 >= dropdown.options.Count)
+            {
+                dropdown.value = 0;
+            }
+            else
+            {
+                dropdown.value += 1;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                Application.Quit();
+            }
+            else
+            {
+                Application.Quit();
+            }
+        }
+    }
 
     void PopulateList()
     {  

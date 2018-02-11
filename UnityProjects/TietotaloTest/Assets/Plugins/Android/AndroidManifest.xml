@@ -30,7 +30,12 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+			<meta-data
+        android:name="com.osterhoutgroup.input_mode"
+        android:value="Mouse" /> 
+
+			<meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="true" />
+			<meta-data android:name="unityplayer.UnityActivity" android:value="true" /> 
         </activity>
         <service
             android:name="com.indooratlas.android.sdk.IALocationService"

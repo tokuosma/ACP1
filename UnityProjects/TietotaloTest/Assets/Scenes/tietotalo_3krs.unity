@@ -161,12 +161,12 @@ Prefab:
         type: 2}
       propertyPath: goal
       value: 
-      objectReference: {fileID: 1553550247}
+      objectReference: {fileID: 161558627}
     - target: {fileID: 114521124795857586, guid: 0dcd5c218d63f440c93b48b2f8b55f01,
         type: 2}
-      propertyPath: distance
-      value: 
-      objectReference: {fileID: 995119715}
+      propertyPath: AutoRedrawPath
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dcd5c218d63f440c93b48b2f8b55f01, type: 2}
   m_IsPrefabParent: 0
@@ -641,12 +641,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46,
     type: 2}
   m_PrefabInternal: {fileID: 918890544}
---- !u!114 &995119715 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114544673876318804, guid: 8b6bdbd32190d8b42b0f0ad372a2ae7a,
-    type: 2}
-  m_PrefabInternal: {fileID: 546593171}
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!4 &1317931383 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4462608292810350, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
@@ -977,6 +971,10 @@ Prefab:
         type: 2}
       propertyPath: Description
       value: Toimistohuone
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441998568940990, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_Name
+      value: TS301
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
