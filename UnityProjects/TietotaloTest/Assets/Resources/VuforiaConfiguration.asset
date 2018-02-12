@@ -15,16 +15,16 @@ MonoBehaviour:
     vuforiaLicenseKey: 
     ufoLicenseKey: QWFrSko3ai8vLy8vQUFBQUtNNEFFbkt4NVVpcHE3QWt4TFI0ZWhNTGRvR05UN056NGdEcFFKQlVra01HMXNEWG9VY2doN0dxamtDSDFSKzlXWHU4ZWtDRDVxY3M2Rkc2VkZYVURNbVVyRFgvRWp1MmR3YUZNVWdzUlhSOG5ka0dtdTZZQm1KVXVTanNIOTRGNjBYdGRtRURPdXBwWng3YlBtaDJ6djBXYmM0QUtuQXhmRVR6eStOQlhmcCtNMmtkNnM0L29kWXVrUnZ2ZjV2c09qLzloMHFWSTd0VTl0L1NmTkRNNThtcWNmZm5ZdW5XQVcvZkxqdjVqTHZhclNQUWdzOFczWEpHSVBJNFNzSHJqdzZKNDREZXdZb1UvbzFGS2RXREQvSndaY2ZzelhNSmk0NERkMS9TY245R0doeXI0QXl0TkIveTlyZy9QclplYVVMSU5YcHc3QmVSQldXY0pJT0pSQUtpM2hrZDJoUXFNdEE1Unp5UVlyYW0=
     delayedInitialization: 0
-    cameraDeviceModeSetting: -1
+    cameraDeviceModeSetting: -2
     maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
-    cameraDirection: 0
+    cameraDirection: 1
     mirrorVideoBackground: 0
   digitalEyewear:
     cameraOffset: 0.06
     distortionRenderingLayer: 31
-    eyewearType: 1
+    eyewearType: 0
     stereoFramework: 0
     seeThroughConfiguration: 0
     viewerName: 

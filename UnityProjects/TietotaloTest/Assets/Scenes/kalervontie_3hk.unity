@@ -236,6 +236,21 @@ Prefab:
       propertyPath: distance
       value: 
       objectReference: {fileID: 988990169}
+    - target: {fileID: 114508989836292158, guid: 0dcd5c218d63f440c93b48b2f8b55f01,
+        type: 2}
+      propertyPath: orientationUpdateDelay
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114508989836292158, guid: 0dcd5c218d63f440c93b48b2f8b55f01,
+        type: 2}
+      propertyPath: positionUpdateDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 20979897456907496, guid: 0dcd5c218d63f440c93b48b2f8b55f01,
+        type: 2}
+      propertyPath: m_TargetEye
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dcd5c218d63f440c93b48b2f8b55f01, type: 2}
   m_IsPrefabParent: 0
