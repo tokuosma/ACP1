@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RegionManager : MonoBehaviour {
 
-    public static RegionManager instance;
+    //public static RegionManager instance;
 
     /// <summary>
     /// Contains all region id's and related scene names
@@ -14,26 +14,43 @@ public class RegionManager : MonoBehaviour {
 
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        //if(instance == null)
+        //{
+        //    instance = this;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
 
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         InitDictionary();
+
+
     }
     // Use this for initialization
     void Start () {
+        if(SceneManager.GetActiveScene().name == "wait_screen")
+        {
+            if (IaListener.Instance.Region != null && IaListener.Instance.Region.type != IndoorAtlas.Region.Type.Unknown)
+            {
+                LoadRegion(IaListener.Instance.Region.id);
+            }
+        }
     }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+        //if (Input.GetKeyUp(KeyCode.Escape))
+        //{
+        //    SceneManager.LoadScene("MainMenu");
+        //}
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
 
     /// <summary>
     /// Initialize dictionary
@@ -70,4 +87,5 @@ public class RegionManager : MonoBehaviour {
     {
         SceneManager.LoadScene("wait_screen");
     }
+
 }

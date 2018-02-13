@@ -62,18 +62,20 @@ public class IaListener : MonoBehaviour {
     void onEnterRegion(string data)
     {
         Region = JsonUtility.FromJson<IndoorAtlas.Region>(data);
-        if (RegionManager.instance != null)
+        RegionManager regionManager = FindObjectOfType<RegionManager>();
+        if (regionManager != null)
         {
-            RegionManager.instance.LoadRegion(Region.id);
+            regionManager.LoadRegion(Region.id);
         }
     }
 
     void onExitRegion(string data)
     {
         Region = JsonUtility.FromJson<IndoorAtlas.Region>(data);
-        if(RegionManager.instance != null)
+        RegionManager regionManager = FindObjectOfType<RegionManager>();
+        if (regionManager != null)
         {
-            RegionManager.instance.LoadWaitScreen();
+            regionManager.LoadWaitScreen();
         }
     }
 #pragma warning restore

@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 93112f2f9bcb94657879495a8c990c7b, type: 2}
+--- !u!1001 &106909750
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4221526110486110, guid: 4005d07a717daf946891fa38228e4634, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 567.941
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221526110486110, guid: 4005d07a717daf946891fa38228e4634, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 377.06055
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221526110486110, guid: 4005d07a717daf946891fa38228e4634, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 134.82178
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221526110486110, guid: 4005d07a717daf946891fa38228e4634, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221526110486110, guid: 4005d07a717daf946891fa38228e4634, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221526110486110, guid: 4005d07a717daf946891fa38228e4634, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221526110486110, guid: 4005d07a717daf946891fa38228e4634, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4221526110486110, guid: 4005d07a717daf946891fa38228e4634, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 4005d07a717daf946891fa38228e4634, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &161558627 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46,
