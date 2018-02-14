@@ -5,6 +5,9 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// A helper object for printing debug text on to the screen
+/// </summary>
 public class DebugHelper : MonoBehaviour {
     private GameObject player;
     private IaListener iaListener;
@@ -31,7 +34,6 @@ public class DebugHelper : MonoBehaviour {
         sb.AppendLine(string.Format("Heading: {0:F4}", iaListener.Heading.heading));
         sb.AppendLine(string.Format("Orientation: x: {0:F4}, y: {1:F4}, z: {2:F4}, w: {3:F2}", iaListener.Orientation.x, iaListener.Orientation.y, iaListener.Orientation.z, iaListener.Orientation.w));
         sb.AppendLine(string.Format("Player position: x: {0:F4}, y: {1:F4}, z: {2:F4}", player.transform.position.x, player.transform.position.y, player.transform.position.z));
-        sb.AppendLine(string.Format("Player rotation: x: {0:F4}, y: {1:F4}, z: {2:F4}", player.transform.eulerAngles.x, player.transform.eulerAngles.y, player.transform.eulerAngles.z));
         sb.AppendLine(string.Format("Camera rotation: x: {0:F4}, y: {1:F4}, z: {2:F4}", Camera.main.transform.localEulerAngles.x, Camera.main.transform.localEulerAngles.y, Camera.main.transform.localEulerAngles.z));
 #endif
         return sb.ToString();
