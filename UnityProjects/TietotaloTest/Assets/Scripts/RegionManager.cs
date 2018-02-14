@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class RegionManager : MonoBehaviour {
 
     //public static RegionManager instance;
-
+    public bool regionUpdateEnabled = true;
     /// <summary>
     /// Contains all region id's and related scene names
     /// </summary>
@@ -72,12 +72,15 @@ public class RegionManager : MonoBehaviour {
     /// <param name="regionId">Region id obtained from IndoorAtlas.Region object</param>
     public void LoadRegion(string regionId)
     {
-        string sceneName = regionDictionary[regionId];
-        if (string.IsNullOrEmpty(sceneName))
+        if (regionUpdateEnabled)
         {
-            Debug.Log(string.Format("No scene with id '{0}' found in the region dictionary! ", regionId));
+            string sceneName = regionDictionary[regionId];
+            if (string.IsNullOrEmpty(sceneName))
+            {
+                Debug.Log(string.Format("No scene with id '{0}' found in the region dictionary! ", regionId));
+            }
+            SceneManager.LoadScene(sceneName);
         }
-        SceneManager.LoadScene(sceneName);
     }
 
     /// <summary>

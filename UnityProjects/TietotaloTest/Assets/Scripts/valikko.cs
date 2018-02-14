@@ -25,6 +25,8 @@ public class valikko : MonoBehaviour
 
     private void Start()
     {
+        playerNavAgent = FindObjectOfType<Player>().transform.GetComponentInChildren<NavMeshAgent>().gameObject;
+
 		kohteet = new List<Destination> ();
 		foreach (Destination destination in GameObject.FindObjectsOfType<Destination>()) {
 			kohteet.Add (destination);

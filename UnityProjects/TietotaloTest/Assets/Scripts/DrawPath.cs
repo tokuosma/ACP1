@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public class DrawPath : MonoBehaviour {
 
-	public Transform goal;
     public Material lineMaterial;
     public float navLineOffsetY;
 	public bool AutoRedrawPath;
@@ -18,21 +17,11 @@ public class DrawPath : MonoBehaviour {
 	/// The nav line drawn.
 	/// </summary>
 	private GameObject navLine;
-    private float pathLength;
 
     void Start () {
         level = FindObjectOfType<Level>();
 		agent = GetComponent<NavMeshAgent> ();
-		agent.SetDestination (goal.transform.position);
-        pathLength = 0;
 	}	
-
-	void Update(){
-
-		if (Input.GetButtonDown("DrawPath") || AutoRedrawPath) {
-			UpdateDrawnPath ();
-		}
-    }
 
 	public void UpdateDrawnPath(){
 		if (navLine == null) {
@@ -63,12 +52,13 @@ public class DrawPath : MonoBehaviour {
 
 	public float GetPathLength(){
 		if (agent != null && agent.hasPath) {
-			float pathLength = 0.0f;
-			Vector3 previous = transform.position;
-			foreach (Vector3 corner in agent.path.corners) {
-				pathLength += Vector3.Distance (previous, corner);
-				previous = corner;
-			}
+            float pathLength = 0.0f;
+            Vector3 previous = transform.position;
+            foreach (Vector3 corner in agent.path.corners)
+            {
+                pathLength += Vector3.Distance(previous, corner);
+                previous = corner;
+            }
 			return pathLength * level.GetScalingFactor();
 		} else {
 			return 0;

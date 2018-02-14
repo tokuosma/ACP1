@@ -7,6 +7,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class Player : MonoBehaviour {
 
     public float positionUpdateDelay;
+    public bool positionUpdateActive = true;
     public float orientationUpdateDelay;
 
     private Level level;
@@ -21,9 +22,13 @@ public class Player : MonoBehaviour {
 #if ((UNITY_ANDROID || UNITY_IOS)  && !UNITY_EDITOR)
         // Disable player controller for actual builds
         //GetComponent<FirstPersonController>().enabled = false;
-        StartCoroutine("UpdatePosition");
         StartCoroutine("UpdateCameraOrientation");
+        if (positionUpdateActive)
+        {
+            StartCoroutine("UpdatePosition");
+        }
 #endif
+        StartCoroutine("UpdatePath");
     }
 
     private void Update()
@@ -44,11 +49,28 @@ public class Player : MonoBehaviour {
                 Vector3 position = FindObjectOfType<Level>().GetLevelPosition(IaListener.Instance.Location.latitude, IaListener.Instance.Location.longitude);
                 transform.position = position;
             }
-            if (navMeshAgent.hasPath) {
-                drawPath.UpdateDrawnPath();
-            }
+            //if (navMeshAgent.hasPath) {
+            //    drawPath.UpdateDrawnPath();
+            //}
 
             yield return new WaitForSeconds(positionUpdateDelay); // Set delay in editor
+        }
+    }
+
+    /// <summary>
+    /// Coroutine for updating drawn path
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator UpdatePath()
+    {
+        for(; ; )
+        {
+            if (navMeshAgent.hasPath)
+            {
+                drawPath.UpdateDrawnPath();
+            }
+            yield return new WaitForSeconds(positionUpdateDelay); // Set delay in editor
+
         }
     }
 
