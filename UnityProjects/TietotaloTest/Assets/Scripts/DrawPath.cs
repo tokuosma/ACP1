@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
 
+/// <summary>
+/// Class handles drawing the route to user agent's destination
+/// </summary>
 public class DrawPath : MonoBehaviour {
 
-    public Material lineMaterial;
-    public float navLineOffsetY;
+    public Material lineMaterial; 
+    public float navLineOffsetY; 
 	public bool AutoRedrawPath;
-	public Text distance;
+	public Text distance; // Text for displaying the remaining distance
 
-    private Level level;
+    private Level level; 
     private NavMeshAgent agent;
 	/// <summary>
 	/// The nav line drawn.
@@ -23,6 +26,9 @@ public class DrawPath : MonoBehaviour {
 		agent = GetComponent<NavMeshAgent> ();
 	}	
 
+    /// <summary>
+    /// Draws the path to user agent destination using line renderer
+    /// </summary>
 	public void UpdateDrawnPath(){
 		if (navLine == null) {
 			// Insantiate a new nav line game object and draw initial path
@@ -41,7 +47,8 @@ public class DrawPath : MonoBehaviour {
 			lr.positionCount = agent.path.corners.Length;
 			lr.SetPositions (agent.path.corners);
 		} else {
-			// Update existinging nav line
+            // Update existinging nav line
+            //navLine.transform.position = transform.position;
 			LineRenderer lr = navLine.GetComponent<LineRenderer> ();
 			lr.positionCount = agent.path.corners.Length;
 			lr.SetPositions (agent.path.corners);
@@ -50,6 +57,10 @@ public class DrawPath : MonoBehaviour {
 		distance.text = string.Format("{0:F1} m", GetPathLength());
 	}
 
+    /// <summary>
+    /// Calculate the distance in meters to destination
+    /// </summary>
+    /// <returns>Distance (float) in meters</returns>
 	public float GetPathLength(){
 		if (agent != null && agent.hasPath) {
             float pathLength = 0.0f;

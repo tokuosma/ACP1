@@ -14,9 +14,17 @@ public class DebugHelper : MonoBehaviour {
     private Text debugText;
     // Use this for initialization
     void Start () {
-        iaListener = IaListener.Instance;
-        player = FindObjectOfType<Player>().gameObject;
-        debugText = GetComponent<Text>();
+        if(PlayerPrefs.GetInt("ShowDebugText",0) == 1)
+        {
+            iaListener = IaListener.Instance;
+            player = FindObjectOfType<Player>().gameObject;
+            debugText = GetComponent<Text>();
+        }
+        else
+        {
+            // Disable debug text if not enabled in settings
+            gameObject.SetActive(false);
+        }
 	}
 	
 	// Update is called once per frame

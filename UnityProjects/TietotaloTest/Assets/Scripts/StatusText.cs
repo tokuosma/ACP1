@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Display IA-status in the wait_screen
+/// </summary>
 public class StatusText : MonoBehaviour {
     private Text statusText;
 	// Use this for initialization

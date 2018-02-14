@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Handles switching scenes based on active region when IA listener is active. 
+/// </summary>
 public class RegionManager : MonoBehaviour {
 
-    //public static RegionManager instance;
+    /// <summary>
+    /// If set to false, region is not updated 
+    /// </summary>
     public bool regionUpdateEnabled = true;
     /// <summary>
     /// Contains all region id's and related scene names
@@ -14,24 +19,14 @@ public class RegionManager : MonoBehaviour {
 
     private void Awake()
     {
-        //if(instance == null)
-        //{
-        //    instance = this;
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
-
-        //DontDestroyOnLoad(this);
         InitDictionary();
-
-
     }
     // Use this for initialization
     void Start () {
+        
         if(SceneManager.GetActiveScene().name == "wait_screen")
         {
+            // Load previous scene on entering wait screen if it exists
             if (IaListener.Instance.Region != null && IaListener.Instance.Region.type != IndoorAtlas.Region.Type.Unknown)
             {
                 LoadRegion(IaListener.Instance.Region.id);
@@ -41,11 +36,6 @@ public class RegionManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-        //if (Input.GetKeyUp(KeyCode.Escape))
-        //{
-        //    SceneManager.LoadScene("MainMenu");
-        //}
         if (Input.GetKeyUp(KeyCode.Escape))
         {
             SceneManager.LoadScene("MainMenu");

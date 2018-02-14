@@ -4,11 +4,23 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityStandardAssets.Characters.FirstPerson;
 
+/// <summary>
+/// Represents the user agent in the scene. Updates position and camera rotation.
+/// </summary>
 public class Player : MonoBehaviour {
 
-    public float positionUpdateDelay;
+    /// <summary>
+    /// Delay in seconds after each position update
+    /// </summary>
+    public float positionUpdateDelay = 1.0f;
+    /// <summary>
+    /// If set to false, position is not updated in scene.
+    /// </summary>
     public bool positionUpdateActive = true;
-    public float orientationUpdateDelay;
+    /// <summary>
+    /// Delay in seconds after each camera rotation update
+    /// </summary>
+    public float orientationUpdateDelay = 0.0167f;
 
     private Level level;
     private NavMeshAgent navMeshAgent;
@@ -49,10 +61,6 @@ public class Player : MonoBehaviour {
                 Vector3 position = FindObjectOfType<Level>().GetLevelPosition(IaListener.Instance.Location.latitude, IaListener.Instance.Location.longitude);
                 transform.position = position;
             }
-            //if (navMeshAgent.hasPath) {
-            //    drawPath.UpdateDrawnPath();
-            //}
-
             yield return new WaitForSeconds(positionUpdateDelay); // Set delay in editor
         }
     }

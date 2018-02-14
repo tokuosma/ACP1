@@ -2,18 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Container for destination info
+/// </summary>
 public class Destination : MonoBehaviour {
 
-	public string Name;
+	public string Name; 
 	public string Description;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

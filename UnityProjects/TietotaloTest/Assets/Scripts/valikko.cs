@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class valikko : MonoBehaviour
 {
-
 	List<Destination> kohteet;
 
 	public GameObject playerNavAgent;
