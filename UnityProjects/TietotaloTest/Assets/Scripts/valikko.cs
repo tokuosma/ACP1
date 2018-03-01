@@ -12,13 +12,20 @@ public class valikko : MonoBehaviour
     public Dropdown dropdown;
     public Text selectedName;
     private ArrowLookAt arrowLookAt;
+    private Destination currentDestination;
 
     ///<summary>Sets new destination when Dropdown index "valinta" is changed. </summary>
     ///<param name="valinta">Dropdown index</param>
 	public void Dropdown_IndexChanged(int valinta)
     {
+        if (currentDestination != null)
+        {
+            currentDestination.Deactivate();
+        }
         selectedName.text = kohteet[valinta].Name;
 		playerNavAgent.GetComponent<NavMeshAgent> ().SetDestination (kohteet [valinta].transform.position);
+        currentDestination = kohteet[valinta];
+        kohteet[valinta].SetActive();
         arrowLookAt.target = kohteet[valinta].transform;
     }
 
