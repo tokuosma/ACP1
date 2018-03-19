@@ -7,6 +7,14 @@ public class Minimapscript : MonoBehaviour
 
     public Transform player;
 
+    private void Start()
+    {
+        if(player == null)
+        {
+            player = FindObjectOfType<Player>().transform;
+        } 
+    }
+
     private void LateUpdate()
     {
         Vector3 newPosition = player.position;
