@@ -25,6 +25,8 @@ public class DebugHelper : MonoBehaviour {
             // Disable debug text if not enabled in settings
             gameObject.SetActive(false);
         }
+
+        
 	}
 	
 	// Update is called once per frame

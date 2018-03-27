@@ -73,6 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e59050ad02f2f419a04c13db9d5e7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loggerPrefab: {fileID: 1764864548618448, guid: 01c9dd435ce0784428b769c1a03b1ac4,
+    type: 2}
 --- !u!222 &222042936200947216
 CanvasRenderer:
   m_ObjectHideFlags: 1
