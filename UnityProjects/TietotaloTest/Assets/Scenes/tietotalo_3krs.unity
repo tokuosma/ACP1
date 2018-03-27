@@ -234,7 +234,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4806685629346670, guid: 0dcd5c218d63f440c93b48b2f8b55f01, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.93
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4806685629346670, guid: 0dcd5c218d63f440c93b48b2f8b55f01, type: 2}
       propertyPath: m_LocalPosition.z
@@ -544,17 +544,32 @@ Prefab:
     - target: {fileID: 224977965261933842, guid: 8b6bdbd32190d8b42b0f0ad372a2ae7a,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030517578
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 224568353716581648, guid: 8b6bdbd32190d8b42b0f0ad372a2ae7a,
         type: 2}
       propertyPath: m_AnchorMin.y
-      value: 0.00000017881393
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114451636096861454, guid: 8b6bdbd32190d8b42b0f0ad372a2ae7a,
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224074979035177610, guid: 8b6bdbd32190d8b42b0f0ad372a2ae7a,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224074979035177610, guid: 8b6bdbd32190d8b42b0f0ad372a2ae7a,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224074979035177610, guid: 8b6bdbd32190d8b42b0f0ad372a2ae7a,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -56
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114451636096861454, guid: 8b6bdbd32190d8b42b0f0ad372a2ae7a, type: 2}
@@ -1079,6 +1094,7 @@ Transform:
   - {fileID: 234845526}
   - {fileID: 141477024}
   - {fileID: 185739949}
+  - {fileID: 1668385093}
   m_Father: {fileID: 544794817}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1156,6 +1172,67 @@ Transform:
   m_PrefabParentObject: {fileID: 4462608292810350, guid: bf18b80e5fb545d4cbe323e728c8f4c0,
     type: 2}
   m_PrefabInternal: {fileID: 1573412628}
+--- !u!1001 &1668385092
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1566556239}
+    m_Modifications:
+    - target: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -105.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.000011622906
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -125.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114965446119001240, guid: 67d420bc2e2c0471db08393b78744e46,
+        type: 2}
+      propertyPath: Name
+      value: "AULA ETEL\xC4 (TS3102)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 114965446119001240, guid: 67d420bc2e2c0471db08393b78744e46,
+        type: 2}
+      propertyPath: Description
+      value: Aula
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441998568940990, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+      propertyPath: m_Name
+      value: TS3102
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 67d420bc2e2c0471db08393b78744e46, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1668385093 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4881539831209676, guid: 67d420bc2e2c0471db08393b78744e46,
+    type: 2}
+  m_PrefabInternal: {fileID: 1668385092}
 --- !u!1 &1733715315
 GameObject:
   m_ObjectHideFlags: 0
